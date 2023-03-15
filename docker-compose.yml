@@ -1,0 +1,22 @@
+version: '3.9'
+
+# Network
+networks:
+  web_network:
+    name: laravel10
+    driver: bridge
+
+# Services
+services:
+  app:
+    # PHP App Service
+    build: .
+    image: laravel10-app
+    container_name: laravel10-app
+    restart: always
+    volumes:
+      - ./src:/var/www
+    ports:
+      - 8800:9000
+    networks:
+      - web_network
